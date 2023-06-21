@@ -4,7 +4,7 @@ const { ethers, BigNumber } = require('ethers')
 const JSBI = require('jsbi')
 const ERC20ABI = require('./abi.json')
 
-const V3_SWAP_ROUTER_ADDRESS = '0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45'
+const V3_SWAP_ROUTER_ADDRESS = '0xE592427A0AEce92De3Edee1F18E0157C05861564'
 const REACT_APP_INFURA_URL_TESTNET = process.env.REACT_APP_INFURA_URL_TESTNET
 
 const chainId = 3
