@@ -7,9 +7,10 @@ import { GearFill  } from 'react-bootstrap-icons';
 import PageButton from './components/PageButton';
 import ConnectButton from './components/ConnectButton';
 import ConfigModal from './components/ConfigModal';
+import CurrencyField   from './components/CurrencyField';
 import { BeatLoader } from 'react-spinners';
 
-import { getWethContract, getUniContract } from './AlphaRouterService'
+import { getWethContract, getUniContract, getPrice, runSwap } from './AlphaRouterService'
 
 function App() {
   const[provider, setProvider] = useState(undefined)
@@ -72,6 +73,8 @@ function App() {
   if (signer !== undefined) {
     getWalletAddress()
   }
+
+  const getSwapPrice = 
 
   return (
     <div className="App">

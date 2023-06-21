@@ -8,7 +8,7 @@ const JSBI = require('jsbi')
 const ERC20ABI = require('./abi.json')
 
 const V3_SWAP_ROUTER_ADDRESS = '0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45'
-const INFURA_URL_TESTNET =  process.env.REACT_APP_INFURA_URL_TESTNET 
+const REACT_APP_INFURA_URL_TESTNET =  process.env.REACT_APP_INFURA_URL_TESTNET 
 
 chanId = 111519
 
@@ -57,5 +57,24 @@ export const getPrice = async (inputAmount, slippageAmount, deadline, walletAddr
         gasPrice: BigNumber.from(route.gasPriceWei),
         gasLimit: ethers.utils.hexlify(1000000)
     }
-    
+     
+    const quoteAmountOut = route.quote.toFixed(6)
+    const ratio = (quoteAmountOut / inputAmount).toFixed(3)
+
+    return[
+        transaction,
+        quoteAmountOut,
+        ratio
+    ]
+}
+
+export const runSwap = async (transaction, signer) =>{
+    const approvalAmount = ethers.utils.parseUnits('10',18).toString()
+    const contract0 = getWethContract()
+    await contract0.connect(signer).approve(
+        V3_SWAP_ROUTER_ADDRESS,
+        approvalAmount
+    )
+
+    signer.sendTransaction(transaction)
 }
