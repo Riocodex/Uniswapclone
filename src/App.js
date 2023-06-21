@@ -19,7 +19,20 @@ function App() {
   const getSigner = async provider =>{
     provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
-    
+    setSigner(signer);
+  }
+
+  const isConnected = () => signer !== undefined
+  const getWalletAddress = () =>{
+    signer.getAddress()
+    .then(address => {
+      setSignerAddress(address)
+
+    })
+  }
+
+  if (signer !== undefined) {
+    getWalletAddress()
   }
 
   return (
