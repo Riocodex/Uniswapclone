@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { ethers } from "ethers";
 
 import PageButton from './components/PageButton';
+import ConnectButton from './components/ConnectButton';
 
 function App() {
   const[provider, setProvider] = useState(undefined)
@@ -46,8 +47,8 @@ function App() {
           <PageButton name={"Charts"} />
         </div>
 
-        <div className='rightNav'>
-          <div className='connectButtonContainer'>
+        <div className="rightNav">
+          <div className="connectButtonContainer">
             <ConnectButton
               provider={provider}
               isConnected={isConnected}
@@ -55,12 +56,13 @@ function App() {
               getSigner={getSigner}
             />
           </div>
+          <div className="my-2 buttonContainer">
+            <PageButton name={"..."} isBold={true} />
+          </div>
         </div>
-        <div className='my-2 buttonContainer'>
-            <PageButton name={"..."} isBold={true}/>
-        </div>
-        </div>
-    </div>
+      </div>
+
+      </div>
   );
 }
 
