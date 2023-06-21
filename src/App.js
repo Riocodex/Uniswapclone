@@ -2,7 +2,7 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { ethers } from "ethers";
 
-import PageButton from './components/pageButton';
+import PageButton from './components/PageButton';
 
 function App() {
   const[provider, setProvider] = useState(undefined)
