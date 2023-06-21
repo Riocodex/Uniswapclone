@@ -18,6 +18,17 @@ function App() {
   const [deadlineMinutes, setDeadlineMinutes] = useState(10)
   const [showModal, setShowModal] = useState(undefined)
 
+  const [inputAmount, setInputAmount] = useState(undefined)
+  const [outputAmount, setOutputAmount] = useState(undefined)
+  const [transaction,  setTransaction] = useState(undefined)
+  const [loading, setLoading] = useState(undefined)
+  const [ratio, setRatio] = useState(undefined)
+  const [wethContract, setWethContract] = useState(undefined)
+  const [uniContract, setUniContract] = useState(undefined)
+  const [wethAmount, setWethAmount] = useState(undefined)
+  const [uniAmount, setUniAmount] = useState(undefined)
+
+
   useEffect(() =>{
     const onLoad = async () =>{
       const provider = await new ethers.providers.Web3Provider(window.ethereum)
