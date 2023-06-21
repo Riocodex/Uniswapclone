@@ -73,7 +73,7 @@ function App() {
           <div className="swapContainer">
             <div className='swapHeader'>
               <span className='swapText'>Swap</span>
-              <span className='gearContainer'>
+              <span className='gearContainer' onClick={() => setShowModal(true)}>
                 <GearFill/>
               </span>
               {showModal && (
@@ -84,6 +84,9 @@ function App() {
                   setSlippageAmount={setSlippageAmount}
                   slippageAmount = {slippageAmount}/>
               )}
+            </div>
+            <div className='swapBody'>
+
             </div>
           </div>
         </div>
