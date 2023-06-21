@@ -2,6 +2,7 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { ethers } from "ethers";
 
+import PageButton from './components/pageButton';
 
 function App() {
   const[provider, setProvider] = useState(undefined)
@@ -37,9 +38,17 @@ function App() {
 
   return (
     <div className="App">
+      <div className="appNav">
+        <div className='my-2 buttonContainer buttonContainerTop'></div>
+        <PageButton name={"Swap"} isBold={true}/>
+        <PageButton name={"Pool"} />
+        <PageButton name={"Vote"} />
+        <PageButton name={"Charts"} />
+       </div>
       <h1>Uniswap Clone</h1>
     </div>
   );
 }
 
 export default App;
+
