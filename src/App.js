@@ -38,14 +38,18 @@ function App() {
 
   return (
     <div className="App">
-      <div className="appNav">
-        <div className='my-2 buttonContainer buttonContainerTop'></div>
-        <PageButton name={"Swap"} isBold={true}/>
-        <PageButton name={"Pool"} />
-        <PageButton name={"Vote"} />
-        <PageButton name={"Charts"} />
-       </div>
-      <h1>Uniswap Clone</h1>
+    <div className="appNav">
+        <div className="my-2 buttonContainer buttonContainerTop">
+          <PageButton name={"Swap"} isBold={true} />
+          <PageButton name={"Pool"} />
+          <PageButton name={"Vote"} />
+          <PageButton name={"Charts"} />
+        </div>
+
+        <div className='rightNav'>
+          <div className='connectButtonContainer'></div>
+        </div>
+        </div>
     </div>
   );
 }
