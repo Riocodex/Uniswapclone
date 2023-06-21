@@ -9,6 +9,8 @@ import ConnectButton from './components/ConnectButton';
 import ConfigModal from './components/ConfigModal';
 import { BeatLoader } from 'react-spinners';
 
+import { getWethContract, getUniContract } from './AlphaRouterService'
+
 function App() {
   const[provider, setProvider] = useState(undefined)
   const [signer, setSigner] = useState(undefined)
@@ -33,6 +35,12 @@ function App() {
     const onLoad = async () =>{
       const provider = await new ethers.providers.Web3Provider(window.ethereum)
       setProvider(provider)
+
+      const wethContract = getWethContract()
+      setWethContract(wethContract)
+
+      const uniContract = getUniContract()
+      setUniContract(uniContract)
     }
     onLoad()
   },[])
@@ -48,6 +56,15 @@ function App() {
     signer.getAddress()
     .then(address => {
       setSignerAddress(address)
+
+      wethContract.balanceOf(address)
+        .then(res =>{
+          setWethAmount( Number(ethers.utils.formatEther(res)))
+        })
+      wethContract.balanceOf(address)
+        .then(res =>{
+          setWethAmount( Number(ethers.utils.formatEther(res)))
+        })
 
     })
   }
