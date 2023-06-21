@@ -2,13 +2,20 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { ethers } from "ethers";
 
+import { GearFill  } from 'react-bootstrap-icons';
+
 import PageButton from './components/PageButton';
 import ConnectButton from './components/ConnectButton';
+import ConfigModal from './components/ConfigModal';
 
 function App() {
   const[provider, setProvider] = useState(undefined)
   const [signer, setSigner] = useState(undefined)
   const [signerAddress, setSignerAddress] = useState(undefined)
+
+  const [slippageAmount, setSlippageAmount] = useState(2)
+  const [deadlineMinutes, setDeadlineMinutes] = useState(10)
+  const [showModal, setShowModal] = useState(undefined)
 
   useEffect(() =>{
     const onLoad = async () =>{
@@ -61,6 +68,25 @@ function App() {
           </div>
         </div>
       </div>
+
+        <div className='appBody'>
+          <div className="swapContainer">
+            <div className='swapHeader'>
+              <span className='swapText'>Swap</span>
+              <span className='gearContainer'>
+                <GearFill/>
+              </span>
+              {showModal && (
+                <ConfigModal
+                  onClose={() => setShowModal(false)}
+                  setDeadLineMinutes ={setDeadlineMinutes}
+                  deadlineMinutes = {deadlineMinutes}
+                  setSlippageAmount={setSlippageAmount}
+                  slippageAmount = {slippageAmount}/>
+              )}
+            </div>
+          </div>
+        </div>
 
       </div>
   );
